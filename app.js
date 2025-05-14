@@ -41,10 +41,17 @@ function login() {
 }
 
 function logout() {
-  auth.signOut().then(() => {
-    window.location.href = "index.html"; // redirect to login page
-  });
+  firebase.auth().signOut()
+    .then(() => {
+      console.log("User signed out");
+      window.location.href = "index.html"; // ✅ Redirect to login page
+    })
+    .catch((error) => {
+      console.error("Logout error:", error.message);
+      document.getElementById("message").textContent = error.message;
+    });
 }
+
 
 // Optional: protect dashboard.html
 if (window.location.pathname.includes("dashboard.html")) {
