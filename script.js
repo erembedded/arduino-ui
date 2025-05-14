@@ -7,7 +7,7 @@ function getSensorData() {
   loading.classList.remove("hidden");
   button.disabled = true;
 
-  fetch("http://192.168.1.100/data") // 🔁 Replace with your Arduino IP and endpoint
+  fetch("http://192.168.31.92/status") // 🔁 Replace with your Arduino IP and endpoint
     .then((res) => {
       if (!res.ok) throw new Error("Network response was not ok");
       return res.text();
