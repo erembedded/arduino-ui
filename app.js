@@ -8,7 +8,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-function login() {
+function login3() {
   const email = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
 
@@ -27,7 +27,7 @@ function login() {
     });
 }
 
-function login1() {
+function login() {
   const email = document.getElementById("email").value;
   const pass = document.getElementById("password").value;
 
