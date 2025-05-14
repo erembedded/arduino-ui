@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Embedded Siksha - RajKumar</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arduino Control Panel - By Raj and Pradeep</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Device Control Panel</h1>
-  
-  <button onclick="getSensorData()">Get Sensor Data</button>
-  <p id="result">Click the button to fetch data from Arduino.</p>
+  <div class="container">
+    <div class="card">
+      <h1>🌡️ Sensor Dashboard</h1>
+      <p>Monitor your Arduino in real-time.</p>
+
+      <button onclick="getSensorData()" id="fetchBtn">🔄 Get Sensor Data</button>
+      <div id="loading" class="hidden">⏳ Loading...</div>
+      <div id="result" class="result">Click the button to get data.</div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
