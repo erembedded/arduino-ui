@@ -41,23 +41,7 @@ function login() {
 }
 
 function logout() {
-  firebase.auth().signOut()
-    .then(() => {
-      console.log("User signed out");
-      window.location.href = "index.html"; // ✅ Redirect to login page
-    })
-    .catch((error) => {
-      console.error("Logout error:", error.message);
-      document.getElementById("message").textContent = error.message;
-    });
-}
-
-
-// Optional: protect dashboard.html
-if (window.location.pathname.includes("dashboard.html")) {
-  auth.onAuthStateChanged(user => {
-    if (!user) {
-      window.location.href = "index.html"; // redirect if not logged in
-    }
+  auth.signOut().then(() => {
+    window.location.href = "index.html"; // redirect to login page
   });
 }
