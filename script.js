@@ -1,20 +1,12 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
-  padding: 20px;
-  text-align: center;
-}
-
-button {
-  padding: 10px 20px;
-  font-size: 16px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-#result {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #333;
+function getSensorData() {
+  fetch("http://192.168.1.100/data")  // ⬅️ Replace with your Arduino's IP and endpoint
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("result").textContent = `Sensor says: ${data}`;
+    })
+    .catch(error => {
+      console.error("Error:", error);
+      document.getElementById("result").textContent = "Error contacting Arduino.";
+    });
 }
 
