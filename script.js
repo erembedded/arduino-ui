@@ -1,12 +1,26 @@
 function getSensorData() {
-  fetch("http://192.168.1.100/data")  // ⬅️ Replace with your Arduino's IP and endpoint
-    .then(response => response.text())
-    .then(data => {
-      document.getElementById("result").textContent = `Sensor says: ${data}`;
+  const resultDiv = document.getElementById("result");
+  const loading = document.getElementById("loading");
+  const button = document.getElementById("fetchBtn");
+
+  resultDiv.textContent = "";
+  loading.classList.remove("hidden");
+  button.disabled = true;
+
+  fetch("http://192.168.1.100/data") // 🔁 Replace with your Arduino IP and endpoint
+    .then((res) => {
+      if (!res.ok) throw new Error("Network response was not ok");
+      return res.text();
     })
-    .catch(error => {
-      console.error("Error:", error);
-      document.getElementById("result").textContent = "Error contacting Arduino.";
+    .then((data) => {
+      resultDiv.textContent = `✅ Sensor says: ${data}`;
+    })
+    .catch((err) => {
+      console.error(err);
+      resultDiv.textContent = "❌ Error contacting Arduino.";
+    })
+    .finally(() => {
+      loading.classList.add("hidden");
+      button.disabled = false;
     });
 }
-
